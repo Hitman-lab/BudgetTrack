@@ -261,7 +261,9 @@ h2{
 	display: inline-block;
 	vertical-align: middle;
 	line-height: 1;
+	margin-left: 20px;
 	/*display: none;*/
+
 }
 
 .item_delete--btn:focus{
@@ -284,3 +286,16 @@ h2{
 	transform: translateX(-20px);
 }
 
+.unpaid{
+	background-color: #FFDAD9 ! important;
+	cursor: pointer;
+	color: #FF5049;
+}
+
+.unpaid .item_percentage{
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.unpaid:hover .item__description { 
+	font-weight: 900; 
+}
