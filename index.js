@@ -132,7 +132,8 @@ var appController = (function(budgetCtrl, UICtrl) {
 		
 		// 2. Add the item to the budget controller
 		var newItems = budgetCtrl.addItem(inputs.type, inputs.description, inputs.value);
-		console.log(newItems);
+		// console.log(newItems);
+		
 		// 3. Add the item to the UI
 		UICtrl.addListItem(newItems, inputs.type);
 
