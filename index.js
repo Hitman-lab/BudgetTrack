@@ -47,7 +47,7 @@ var budgetController = (function() {
 				}
 
 			}else{
-				alert("Enter Description Box!!");
+				alert("Enter Description Box!");
 			}
 			// then push it into the data structure
 			data.allItems[type].push(newItem);
