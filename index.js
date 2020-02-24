@@ -38,12 +38,17 @@ var budgetController = (function() {
 			}
 				
 			// create new item based on 'inc' or 'exp' type
-			if(type === 'exp'){
-				newItem = new Expenses(ID, des, val);
-			}else if(type === 'inc'){
-				newItem = new Income(ID, des, val);
-			}
+			if(des.length !== 0){
+				
+				if(type === 'exp'){
+					newItem = new Expenses(ID, des, val);
+				}else if(type === 'inc'){
+					newItem = new Income(ID, des, val);
+				}
 
+			}else{
+				alert("Enter Description!!");
+			}
 			// then push it into the data structure
 			data.allItems[type].push(newItem);
 			return newItem; // return the new item
@@ -133,7 +138,7 @@ var appController = (function(budgetCtrl, UICtrl) {
 		// 2. Add the item to the budget controller
 		var newItems = budgetCtrl.addItem(inputs.type, inputs.description, inputs.value);
 		// console.log(newItems);
-		
+
 		// 3. Add the item to the UI
 		UICtrl.addListItem(newItems, inputs.type);
 
