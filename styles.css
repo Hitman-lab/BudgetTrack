@@ -223,7 +223,7 @@ h2{
 
 .item_value{
 	float: left;
-	transition: transform 0.3s;
+	transition: transform 0.3s;	
 }
 
 .item_percentage{
