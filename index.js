@@ -88,13 +88,23 @@ var UIController = (function() {
 
 			// create the HTML string with placeholder text
 			if(type === 'inc'){
+				
 				element = DOMStrings.incomeContainer;
+				html = '<div class="item clearfix" id="income-%id%">'+
+						'<div class="item_description">%description%</div>'+
+						'<div class="right clearfix"><div class="item_value">%value%</div>'+
+						'<div class="item_delete"><button class="item_delete--btn">'+
+						'<i class="ion-ios-close-outline"></i></button></div></div></div>';
 
-				html = '<div class="item clearfix" id="income-%id%"><div class="item_description">%description%</div><div class="right clearfix"><div class="item_value">%value%</div><div class="item_delete"><button class="item_delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
 			}else if(type === 'exp') {
+				
 				element = DOMStrings.expensesContainer;
-
-				html = '<div class="item clearfix" id="expenses-%id%"><div class="item_description">%description%</div><div class="right clearfix"><div class="item_value">%value%</div><div class="item_percentage">21%</div><div class="item_delete"><button class="item_delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+				html = '<div class="item clearfix" id="expenses-%id%">'+
+					   '<div class="item_description">%description%</div>'+
+					   '<div class="right clearfix"><div class="item_value">%value%</div>'+
+					   '<div class="item_percentage">21%</div><div class="item_delete">'+
+					   '<button class="item_delete--btn"><i class="ion-ios-close-outline"></i>'+
+					   '</button></div></div></div>';
 			}
 
 			// Replace the Placeholder text with some actual code
@@ -104,6 +114,14 @@ var UIController = (function() {
 
 			// Insert the HTML into the DOM
 			document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);		
+		},
+
+		clearFields: function() {
+			var fields, fieldsArray;
+			fields = document.querySelectorAll(DOMStrings.inputDescription + ',' + DOMStrings.inputValue); // this returns the list
+
+			// which have to convert to the array // so that we can loop over this
+			fieldsArray = Array.prototype.slice.call(fields);
 		}
 	};
 })();
