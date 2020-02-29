@@ -14,6 +14,13 @@ var budgetController = (function() {
 		this.value = value;
 	};
 
+	var calculateTotal = function(type){
+
+		
+
+
+	};
+
 	var data = {
 		allItems: {
 			exp: [],
@@ -38,20 +45,19 @@ var budgetController = (function() {
 			}
 				
 			// create new item based on 'inc' or 'exp' type
-			if(des.length !== 0){
-				
-				if(type === 'exp'){
-					newItem = new Expenses(ID, des, val);
-				}else if(type === 'inc'){
-					newItem = new Income(ID, des, val);
-				}
-
-			}else{
-				alert("Enter Description Box!");
+			if(type === 'exp'){
+				newItem = new Expenses(ID, des, val);
+			}else if(type === 'inc'){
+				newItem = new Income(ID, des, val);
 			}
+
 			// then push it into the data structure
 			data.allItems[type].push(newItem);
 			return newItem; // return the new item
+		},
+
+		testing: function(){
+			return data.allItems;
 		}
 	};
 
@@ -74,7 +80,7 @@ var UIController = (function() {
 			return{
 				type: document.querySelector(DOMStrings.inputType).value,
 				description: document.querySelector(DOMStrings.inputDescription).value,
-				value: document.querySelector(DOMStrings.inputValue).value
+				value: parseFloat(document.querySelector(DOMStrings.inputValue).value)
 			};
 		},
 
@@ -122,6 +128,15 @@ var UIController = (function() {
 
 			// which have to convert to the array // so that we can loop over this
 			fieldsArray = Array.prototype.slice.call(fields);
+
+			// parsing the array using forEach 
+			fieldsArray.forEach(function(currentVal, index, array) {
+				currentVal.value = "";
+			});
+
+			// focus back to the description box
+			fieldsArray[0].focus();
+			fieldsArray[0].style.border ='1px solid red';
 		}
 	};
 })();
@@ -148,22 +163,38 @@ var appController = (function(budgetCtrl, UICtrl) {
 		});
 	};
 
+
+	var updateBudget = function(){
+
+		// 1. Calculate the budget
+
+		// 2. return the budget
+
+		// 3. Display the budget on the UI
+
+	};
+
+
 	var ctrlAddItem = function() {
 		
 		// 1. Get the field input data
 		var inputs = UICtrl.getInput();
 		
-		// 2. Add the item to the budget controller
-		var newItems = budgetCtrl.addItem(inputs.type, inputs.description, inputs.value);
-		// console.log(newItems);
+		if(inputs.description !== '' && !isNAN(inputs.value) && inputs.value > 0 ){
 
-		// 3. Add the item to the UI
-		UICtrl.addListItem(newItems, inputs.type);
+			// 2. Add the item to the budget controller
+			var newItems = budgetCtrl.addItem(inputs.type, inputs.description, inputs.value);
+			// console.log(newItems);
 
-		// 4. Calculate the budget
+			// 3. Add the item to the UI
+			UICtrl.addListItem(newItems, inputs.type);
 
-		// 5. Display the budget on the UI
+			// 4. clear the fields
+			UICtrl.clearFields();
 
+			// budget update
+			updateBudget();
+		}
 	};
 
 	return{
