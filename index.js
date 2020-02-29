@@ -250,7 +250,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
 
 	var controlDeleteItem = function(event) {
+		var itemID;
 
+		console.log(event.target);
 	}
 
 	return{
