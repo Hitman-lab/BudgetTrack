@@ -77,6 +77,10 @@ var budgetController = (function() {
 
 		},
 
+		deleteItem: function(type, id) {
+			
+		},
+
 		getBudget: function() {
 			return {
 				budget: data.budget,
@@ -250,10 +254,16 @@ var appController = (function(budgetCtrl, UICtrl) {
 
 
 	var controlDeleteItem = function(event) {
-		var itemID;
+		var itemID, splitID, type, ID;
   
 		itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
-	}
+		if(itemID){
+			splitID = itemID.split('-');
+			type = splitID[0];
+			ID = splitID[1];
+
+		}
+	};
 
 	return{
 		init: function() {
