@@ -131,7 +131,7 @@ var UIController = (function() {
 			if(type === 'inc'){
 				
 				element = DOMStrings.incomeContainer;
-				html = '<div class="item clearfix" id="income-%id%">'+
+				html = '<div class="item clearfix" id="inc-%id%">'+
 						'<div class="item_description">%description%</div>'+
 						'<div class="right clearfix"><div class="item_value">%value%</div>'+
 						'<div class="item_delete"><button class="item_delete--btn">'+
@@ -140,7 +140,7 @@ var UIController = (function() {
 			}else if(type === 'exp') {
 				
 				element = DOMStrings.expensesContainer;
-				html = '<div class="item clearfix" id="expenses-%id%">'+
+				html = '<div class="item clearfix" id="exp-%id%">'+
 					   '<div class="item_description">%description%</div>'+
 					   '<div class="right clearfix"><div class="item_value">%value%</div>'+
 					   '<div class="item_percentage">21%</div><div class="item_delete">'+
@@ -251,8 +251,8 @@ var appController = (function(budgetCtrl, UICtrl) {
 
 	var controlDeleteItem = function(event) {
 		var itemID;
-
-		console.log(event.target);
+  
+		itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 	}
 
 	return{
