@@ -13,6 +13,16 @@ body{
 	font-weight: 400;
 }
 
+.right{
+	float: right;
+}
+.red{
+	color: #FF5049 !important; 
+}
+.red-focus:focus {
+	border: 1px solid #FF5049 !important;
+}
+
 /* vh defines the view port height 1vh = 1% */
 
 /*----------------- TOP PART -------------------*/
@@ -258,7 +268,7 @@ h2{
 	background: none;
 	border: none;
 	cursor: pointer;
-	display: inline-block;
+	display: none;
 	vertical-align: middle;
 	line-height: 1;
 	margin-left: 20px;
@@ -266,11 +276,11 @@ h2{
 
 }
 
-.item_delete--btn:focus{
+.item_delete--btn:focus {
 	outline: none;
 }
 
-.item_delete--btn:active{
+.item_delete--btn:active {
 	transform: translateY(2px);
 }
 

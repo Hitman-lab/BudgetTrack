@@ -279,13 +279,19 @@ var UIController = (function() {
 			});
 		},
 
+		changedType: function(){
+			
+		},
+
 		displayMonth: function(){
-			var now, year;
+			var now, year, months, month;
 
 			now = new Date();
+			months = ['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
 
+			month = now.getMonth();
 			year = now.getFullYear();
-			document.querySelector(DOMStrings.dateLabel).textContent = year;
+			document.querySelector(DOMStrings.dateLabel).textContent = months[month] + ' - ' + year;
 		}
 	};
 })();
@@ -312,6 +318,7 @@ var appController = (function(budgetCtrl, UICtrl) {
 		});
 
 		document.querySelector(DOM.container).addEventListener('click', controlDeleteItem);
+		document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
 	};
 
 
