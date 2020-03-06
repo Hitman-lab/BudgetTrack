@@ -239,7 +239,7 @@ var UIController = (function() {
 
 			// focus back to the description box
 			fieldsArray[0].focus();
-			fieldsArray[0].style.border ='1px solid red';
+			// fieldsArray[0].style.border ='1px solid red';
 		},
 
 		displayBudget: function(obj) {
@@ -280,7 +280,22 @@ var UIController = (function() {
 		},
 
 		changedType: function(){
-			
+
+			var fields = document.querySelectorAll(
+				DOMStrings.inputType + ',' + DOMStrings.inputDescription + ',' + DOMStrings.inputValue		
+			);
+
+			var parseNodeList = function(listItem, callBack){
+				for(var i = 0; i < listItem.length; i++){
+					callBack(listItem[i],i);
+				}
+			};
+
+			parseNodeList(fields, function(cur,index) {
+				cur.classList.toggle('red-focus');
+			});		
+
+			document.querySelector(DOMStrings.inputBtn).classList.toggle('red-focus');		
 		},
 
 		displayMonth: function(){
@@ -400,6 +415,7 @@ var appController = (function(budgetCtrl, UICtrl) {
 		init: function() {
 			console.log('application has started.');
 			UICtrl.displayMonth();
+			UICtrl.changedType();
 			UICtrl.displayBudget(
 				{
 					budget: 0,
