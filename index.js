@@ -255,7 +255,23 @@ var UIController = (function() {
 				}
 
 			});
+		},
 
+		formatNumber: function(num, type) {
+			var numSplit, int, dec;
+
+			num = Math.abs(num);
+			num = num.toFixed(2);
+
+			numSplit = num.split('.');
+
+			int = numSplit[0];
+			if(int.length > 3){
+				int = int.substr(0, 1) + ',' + int.substr(1, 3);
+			}
+
+
+			dec = numSplit[1];
 		}
 	};
 })();
