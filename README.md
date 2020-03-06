@@ -1,6 +1,6 @@
 # BudgetTrack
 
-It's a basic monthly budget tracking application.<br>
+It's a basic monthly budget tracking application. Which has interactive UI and applied efficient javascript logic.<br> <br>
 
 > screenshots
 
